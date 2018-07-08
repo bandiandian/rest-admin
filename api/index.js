@@ -57,30 +57,30 @@ router.get('/site', (req, res) => res.send({
       title: true,
     },
     {
-      name: 'Categories',
+      name: 'Customers',
       url: '/rest/categories',
       icon: 'icon-list',
     },
-    {
-      name: 'Products',
-      url: '/rest/products',
-      icon: 'icon-list',
-    },
-    {
-      name: 'Users',
-      url: '/rest/users',
-      icon: 'icon-user',
-    },
+    // {
+    //   name: 'Products',
+    //   url: '/rest/products',
+    //   icon: 'icon-list',
+    // },
+    // {
+    //   name: 'Users',
+    //   url: '/rest/users',
+    //   icon: 'icon-user',
+    // },
     {
       name: 'System',
       title: true,
     },
-    {
-      "name": "Settings",
-      "url": "/form?uri=site/settings",
-      "icon": "icon-settings",
-      // a custom form.
-    },
+    // {
+    //   "name": "Settings",
+    //   "url": "/form?uri=site/settings",
+    //   "icon": "icon-settings",
+    //   // a custom form.
+    // },
     {
       name: 'Logout',
       url: '/login',

@@ -12,36 +12,61 @@ const categories = {
   data: [],
   fields: {
     [config.primaryKey]: { label: 'ID' },
-    parent_id: { label: 'Parent', ref: 'parent.name', type: 'tree', options: [], cols: 4 },
-    slug: { cols: 4, searchable: true },
-    name: { cols: 4 },
-    created_at: { label: 'Created At', type: 'datetime' }
+    name: { label: '公司名',  cols: 5 ,searchable: true},
+    contact: { label: '联系人', cols: 4, },
+    phone: { label: '电话', cols: 4 },
+    address: { label: '联系地址', cols: 6 },
+    createtime: { label: '更新时间', type: 'datetime' }
   }
 }
 
-_.times(15, i => {
-  const name = inflection.titleize(faker.commerce.department())
-  categories.data.push({
-    [config.primaryKey]: `c${genId(i)}`,
-    parent_id: null,
-    slug: name.slugify(),
-    name: name,
-    created_at: faker.date.recent()
+
+
+const mongoClient = require('mongodb').MongoClient;
+const url = "mongodb://localhost:27017";
+mongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  console.log("数据库已创建!");
+  var dbo = db.db("smartdb");
+  dbo.collection('resources').find({}).toArray(function(err,result){
+    console.log("resources"+err);
+    if(err) throw err;
+    getAllCustomers(result)
+    db.close();
   })
+
 })
 
-categories.data = categories.data.map((v, i) => {
-  if (i < 3) {
-    return v
-  }
-  const parent = _.sample(categories.data)
-  if (!parent || parent[config.primaryKey] == v[config.primaryKey]) {
-    // return v
-  }
-  v.parent_id = parent[config.primaryKey]
-  v.parent = _.clone(parent)
-  return v
-})
+function getAllCustomers(data){
+  categories.data = data
+}
+
+
+// _.times(15, i => {
+//   console.log("ii:"+i);
+//   const name = inflection.titleize(faker.commerce.department())
+//   categories.data.push({
+//     [config.primaryKey]: `c${genId(i)}`,
+//     company: 'Qingdao Zhuoyue Container Packing Material CO.Ltd',
+//     contract: 'wendy wang',
+//     telephone: '86-0532-89082851',
+//     address:'Room 1104 , Jinguang Tower ,No.56 Hongkong Middle Road Laiwu,Shandong',
+//     created_at: faker.date.recent()
+//   })
+// })
+
+// categories.data = categories.data.map((v, i) => {
+//   if (i < 3) {
+//     return v
+//   }
+//   const parent = _.sample(categories.data)
+//   if (!parent || parent[config.primaryKey] == v[config.primaryKey]) {
+//     // return v
+//   }
+//   v.parent_id = parent[config.primaryKey]
+//   v.parent = _.clone(parent)
+//   return v
+// })
 
 function findChildren(data = [], id = null, primaryKey = config.primaryKey, foreignKey = 'parent_id', labelKey = 'name') {
   const ret = _.filter(data, v => v[foreignKey] == id).map(v => {
@@ -56,7 +81,7 @@ function findChildren(data = [], id = null, primaryKey = config.primaryKey, fore
   return ret
 }
 
-categories.fields.parent_id.options = findChildren(categories.data)
+// categories.fields.parent_id.options = findChildren(categories.data)
 
 // Users
 const users = {

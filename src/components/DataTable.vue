@@ -2,7 +2,7 @@
   <b-card :header="header">
     
     <div class="data-table">
-      <div class="py-1">
+      <div class="py-1"  v-if="_.isEmpty(searchFields)">
         <b-btn :to="resourceUri + '/create'" variant="secondary">
         <i class="icon-plus"></i>
         {{$t('actions.create')}}
@@ -45,15 +45,15 @@
         </template>
         
         <template slot="_actions" slot-scope="row" >
-          <b-btn size="sm" variant="success" @click.stop="show(row.item)" v-if="!fields._actions.buttons || fields._actions.buttons.show !== false">
+          <b-btn size="sm" variant="success" @click.stop="show(row.item)" v-if="!fields._actions.buttons">
             <i class="icon-eye"></i>
             {{$t('actions.view')}}
           </b-btn>
-          <b-btn size="sm" variant="primary" @click.stop="edit(row.item)" v-if="!fields._actions.buttons || fields._actions.buttons.edit !== false">
+          <b-btn size="sm" variant="primary" @click.stop="edit(row.item)" v-if="fields._actions.buttons">
             <i class="icon-pencil"></i>
             {{$t('actions.edit')}}
           </b-btn>
-          <b-btn size="sm" variant="second" @click.stop="remove(row.item)" v-if="!fields._actions.buttons || fields._actions.buttons.remove !== false">
+          <b-btn size="sm" variant="second" @click.stop="remove(row.item)" v-if="fields._actions.buttons">
             <i class="icon-trash"></i>
             {{$t('actions.delete')}}
           </b-btn>
@@ -238,6 +238,7 @@ export default {
           this.applyQuery();
           this.fetch();
         }
+        console.log(this.fields._actions)
       });
     },
     applyQuery() {
