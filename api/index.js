@@ -142,7 +142,7 @@ router.post('/login', (req, res) => {
     })
   } else {
     res.status(422).send({
-      message: 'Username or password is incorrect why?.'
+      message: '用户名或密码不对.'
     })
   }
 })
@@ -185,6 +185,7 @@ router.post('/site/settings', ({ body }, res) => {
 */
 
 const resources = require('./resources')
+
 
 const resourceRouter = express.Router()
 
