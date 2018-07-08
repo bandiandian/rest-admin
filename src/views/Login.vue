@@ -16,8 +16,9 @@
             <div class="card text-white bg-primary py-5 d-md-down-none" style="width:44%">
               <div class="card-body text-center">
                 <div>
-                  <h2>{{site.name || 'REST ADMIN'}} - {{$t('messages.dashboard')}}</h2>
-                  <p>{{site.description}}</p>
+                  <h2>{{site.name }}</h2>
+
+                  <p v-html="site.description" v-if="site.description"></p>
                   <button type="button" class="btn btn-primary active mt-3">{{$t('messages.go_home')}}</button>
                 </div>
               </div>

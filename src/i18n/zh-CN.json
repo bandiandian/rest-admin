@@ -41,9 +41,9 @@
   "messages": {
     "paginate": "共{total}条数据",
     "login_please": "请先登录",
-    "login_footer": "REST ADMIN - Awesome Admin Dashboard for RESTFul API",
+    "login_footer": "奇点物流大数据平台 - 您的智慧物流",
     "dashboard": "控制台",
-    "go_home": "返回首页",
+    "go_home": "了解更多",
     "succeed": "操作成功",
     "uploaded": "上传成功",
     "deleted": "删除成功",

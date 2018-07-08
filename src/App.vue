@@ -20,7 +20,7 @@ export default {
   },
   watch: {
     "$store.state.site.name"(name) { 
-      window.document.title = name || "REST ADMIN DASHBOARD"
+      window.document.title = name || "奇点物流大数据平台"
     }
   },
   methods: {

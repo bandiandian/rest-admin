@@ -7,15 +7,15 @@ export default {
   state: {
     name: 'REST ADMIN',
     url: '',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    description: `<ul><li style= "text-align:left">物流大数据平台可以帮你找到潜在客户</li><li style= "text-align:left">实时追踪你的物流订单信息</li><li style= "text-align:left">简化你的货运线下繁琐流程，线上报关</li></ul>`,
     menu: menu,
     footer: `<span><a href="https://github.com/wxs77577/rest-admin">REST ADMIN</a> &copy; ${new Date().getFullYear()} </span>
     <span class="ml-auto">
       Powered by <a href="https://github.com/wxs77577/rest-admin">REST ADMIN</a>
     </span>`,
     logo: require('@/assets/img/logo.png'),
-    locale: 'en-US',
-    locale_switcher: true,
+    locale: 'zh-CN',
+    locale_switcher: false,
   },
   mutations: {
     [types.SET_SITE](state, data) {

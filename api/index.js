@@ -26,14 +26,14 @@ app.use((req, res, next) => {
 
 // for basic site config
 router.get('/site', (req, res) => res.send({
-  name: 'REST-ADMIN', //site name
-  locale: 'en-US',
-  locale_switcher: true,
+  name: '奇点物流大数据平台', //site name
+  locale: 'zh-CN',
+  locale_switcher: false,
   url: 'https://github.com/wxs77577/rest-admin',
   footer: `
-  <span><a href="https://github.com/wxs77577/rest-admin">REST-ADMIN</a> &copy; 2018</span>
+  <span><a href="#">奇点科技</a> &copy; 2018</span>
   <span class="ml-auto">
-    GitHub <a href="https://github.com/wxs77577/rest-admin">REST-ADMIN</a>
+    <a href="#">联系我们</a>
   </span>
   <script>
   //Baidu Statistic
@@ -91,8 +91,8 @@ router.get('/site', (req, res) => res.send({
 
 // for home page
 router.get('/home', (req, res) => res.send({
-  title: 'Welcome to REST ADMIN',
-  description: 'Admin dashboard based on vue 2 and bootstrap 4',
+  title: '欢迎进入物流大数据平台',
+  description: '奇点物流大数据平台,你的智慧物流',
   button: {
     icon: 'icon-people',
     variant: 'primary',
@@ -104,28 +104,28 @@ router.get('/home', (req, res) => res.send({
       bg: 'info',
       icon: 'icon-speedometer',
       value: 5000 + parseInt(Math.random() * 5000),
-      title: 'Comments',
+      title: '新注册用户',
       progress: 78
     },
     {
       bg: 'success',
       icon: 'icon-people',
       value: 10000 + parseInt(Math.random() * 10000),
-      title: 'Users',
+      title: '青岛用户',
       progress: 60
     },
     {
       bg: 'warning',
       icon: 'icon-basket-loaded',
       value: 100000 + parseInt(Math.random() * 30000),
-      title: 'Sales',
+      title: '全国销售额',
       progress: 92
     },
     {
       bg: 'primary',
       icon: 'icon-camrecorder',
       value: 300 + parseInt(Math.random() * 300),
-      title: 'Videos',
+      title: '优质用户',
       progress: 67
     },
   ]
@@ -133,6 +133,8 @@ router.get('/home', (req, res) => res.send({
 
 router.post('/login', (req, res) => {
   const { username, password } = req.body
+  console.log('username:'+username);
+  console.log("password:"+password);
   if (username == 'admin' && password == 'admin') {
     res.send({
       user: { username, password },
@@ -140,7 +142,7 @@ router.post('/login', (req, res) => {
     })
   } else {
     res.status(422).send({
-      message: 'Username or password is incorrect.'
+      message: 'Username or password is incorrect why?.'
     })
   }
 })
@@ -302,5 +304,5 @@ router.use('/:resource', (req, res, next) => {
 app.use('/admin/api', router)
 const PORT = process.env.PORT || 8088
 app.listen(PORT, () => {
-  console.log(`Test API is listening at http://localhost:${PORT}`)
+  console.log(`Test AP121I is listening at http://localhost:${PORT}`)
 })

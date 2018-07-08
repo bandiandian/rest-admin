@@ -31,7 +31,7 @@ const dateTimeFormats = {
 }
 
 export default new VueI18n({
-  locale: 'en-US',
+  locale: 'zh-CN',
   messages,
   dateTimeFormats,
   silentTranslationWarn: true,
